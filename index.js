@@ -1,16 +1,16 @@
 'use strict';
 
-const simpleGit = require('simple-git');
+const { simpleGit } = require('simple-git');
 
 module.exports = class ChangelogGenerator {
 
-  constructor(remotePath, currentPath) {
+  constructor(remotePath, currentPath, gitFactory = simpleGit) {
     this.remotePath = remotePath;
     this.localPath = currentPath;
     this.tagName = '';
     this.tagComment = '';
     this.tagNameFormat = 'v%x.%y.%z';
-    this.git = simpleGit(this.localPath);
+    this.git = gitFactory(this.localPath);
   }
 
   async prepare(target) {
@@ -19,11 +19,10 @@ module.exports = class ChangelogGenerator {
     await this.git.checkout(this.target);
   }
   generate() {
-    
+    // Not implemented in the original API.
   }
-  
-  async tag() {
 
+  async tag() {
+    // Not implemented in the original API.
   }
-  
 };
